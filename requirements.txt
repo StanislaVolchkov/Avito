@@ -9,3 +9,4 @@ torch==1.8.1
 tokenizers==0.12.1
 transformers==4.19.2
 xgboost==0.90
+navec==0.10.0
