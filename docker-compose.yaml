@@ -5,8 +5,8 @@ services:
         build:
           context: ./
           dockerfile: ./Dockerfile
-        image: contacts-in-item:${USER}
-        container_name: contacts-in-item-${USER}
+        image: contacts-in-item:latest
+        container_name: contacts-in-item-stasvol
         volumes:
             - ./:/app
             - ./data:/data
