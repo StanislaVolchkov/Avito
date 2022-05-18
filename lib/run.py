@@ -120,6 +120,7 @@ class Test:
         return df
 
     def run(self):
+        
         self.logger.info(f'Запуск модели {self.user}')
         task1_prediction, task2_prediction = self.process()
         task1_prediction.index = task1_prediction['index']
@@ -128,10 +129,11 @@ class Test:
         self._check(self.test(), task1_prediction, task2_prediction)
 
         task1_path = os.path.join(self.test_data_dir, f'{self.user}_{self.task1_prediction}')
-        task2_path = os.path.join(self.test_data_dir, f'{self.user}_{self.task2_prediction}')
-        self.logger.info(f'Сохранение результатов {task1_path}')
+        self.logger.info(f'Сохранение результатов 1 {task1_path}')
         task1_prediction.to_csv(task1_path, index=False)
-        self.logger.info(f'Сохранение результатов {task2_path}')
+        
+        task2_path = os.path.join(self.test_data_dir, f'{self.user}_{self.task2_prediction}')
+        self.logger.info(f'Сохранение результатов 2 {task2_path}')
         task2_prediction.to_csv(task2_path, index=False)
 
         self.logger.info('Готово')
@@ -141,7 +143,7 @@ class Test:
 
         task1_prediction = pd.DataFrame(columns=['index', 'prediction'])
         task1_prediction['index'] = test.index
-        task1_prediction['prediction'] = task1(test) #test['title'].apply(task1)
+        task1_prediction['prediction'] = task1(test.iloc[: , 1).test 
 
         task2_prediction = pd.DataFrame(columns=['index', 'start', 'finish'])
         task2_prediction['index'] = test.index
