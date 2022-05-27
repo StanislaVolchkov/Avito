@@ -40,7 +40,7 @@ class task1():
         
         return ' '.join([list(self.morph.parse(token))[0].normal_form for token in word_tokenize(text) if token not in stop])
     
-    def vectorize_sum(text, embeddings):
+    def vectorize_sum(self, text, embeddings):
         
         embedding_dim = 300
         features = np.zeros([embedding_dim], dtype='float32')
@@ -61,18 +61,18 @@ class task1():
         
     @property
     def test(self):
-        
+        print('Преобразовываем данные')
         self.make_right_data()
-
+        print('Векторизуем')
         X = pd.DataFrame(np.stack([self.vectorize_sum(text, self.embeddings_pretrained) for text in self.data.iloc[:, 1]]))
 
         x_test = pd.concat([self.data.iloc[ :, [2, 3, 4, 5]], X], axis=1)
 
         with open('model.pkl', 'rb') as f:
             model = pickle.load(f)
-
+        print('Прогнозируем')
         y_pred = model.predict_proba(x_test)[:,1]
-        print('hello!')
+        print('гуд бай!')
         return y_pred
 
 def task2(description: str) -> Union[Tuple[int, int], Tuple[None, None]]:
