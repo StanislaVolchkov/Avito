@@ -23,5 +23,7 @@ COPY . $PROJECT_ROOT
 WORKDIR $PROJECT_ROOT
 
 RUN pip install -r requirements.txt
+RUN python3.8 -m nltk.downloader punkt
+RUN python3.8 -m nltk.downloader stopwords
 
 CMD python lib/run.py
