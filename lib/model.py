@@ -7,6 +7,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import re
 import pymorphy2
+import pickle
 
 import catboost
 #import optuna
