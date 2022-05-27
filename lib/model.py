@@ -20,7 +20,7 @@ class task1():
     
     def __init__(self, df):
         self.data = df
-        self.embeddings_pretrained = Navec.load('./navec_hudlit_v1_12B_500K_300d_100q.tar')
+        self.embeddings_pretrained = Navec.load('lib/navec_hudlit_v1_12B_500K_300d_100q.tar')
         
     def make_right_data(self):
         
