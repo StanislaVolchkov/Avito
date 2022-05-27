@@ -24,7 +24,7 @@ class task1():
         
     def make_right_data(self):
         
-        morph = pymorphy2.MorphAnalyzer()
+        self.morph = pymorphy2.MorphAnalyzer()
         cat_change = dict.fromkeys(list(self.data['subcategory'].unique()))
         for i in cat_change.keys():
             cat_change[i] = round(self.data[self.data['subcategory'] == i]['price'].mean(), 1)
@@ -34,11 +34,11 @@ class task1():
         self.data['description'] = self.data['description'].apply(lambda x: re.sub(r'[,\.]',' ', x)) 
         self.data['description'] = self.data['description'].apply(lambda x: re.sub(r'[_]','', x)) 
         self.data['description'] = self.data['description'].apply(lambda x: re.sub(r'[^\w\s]','', x)) 
-        self.data['description'] = self.data['description'].apply(lambda x: self.preproc(x, morph)) 
+        self.data['description'] = self.data['description'].apply(lambda x: self.preproc(x)) 
     
-    def preproc(text, morph):
+    def preproc(self, text):
         
-        return ' '.join([list(morph.parse(token))[0].normal_form for token in word_tokenize(text) if token not in stop])
+        return ' '.join([list(self.morph.parse(token))[0].normal_form for token in word_tokenize(text) if token not in stop])
     
     def vectorize_sum(text, embeddings):
         
