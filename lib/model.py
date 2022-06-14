@@ -69,7 +69,7 @@ class task1():
 
         x_test = pd.concat([self.data.iloc[ :, [2, 3, 4, 5]], X], axis=1)
 
-        with open('lib/model.pkl', 'rb') as f:
+        with open('lib/model2.pickle', 'rb') as f:
             model = pickle.load(f)
         #print('Прогнозируем')
         y_pred = model.predict_proba(x_test)[:,1]
