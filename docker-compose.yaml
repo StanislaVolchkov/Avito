@@ -1,7 +1,7 @@
 version: '2.3'
 services:
     dev:
-        # runtime: nvidia
+        runtime: nvidia
         build:
           context: ./
           dockerfile: ./Dockerfile
